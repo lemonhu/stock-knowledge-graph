@@ -24,6 +24,7 @@ stock-knowledge-graph/
 │       ├── stock.csv
 │       ├── stock_concept.csv
 │       └── stock_industry.csv
+├── design.png
 ├── result.txt
 ├── img
 │   ├── executive.png
