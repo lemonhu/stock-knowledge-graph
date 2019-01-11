@@ -2,7 +2,7 @@
 
 利用网络上公开的数据构建一个小型的证券知识图谱。
 
-Welcome to star or fork.
+Welcome to watch, star or fork.
 
 ### 工程目录结构
 
