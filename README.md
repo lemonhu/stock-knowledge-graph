@@ -1,6 +1,8 @@
-## 小型证券知识图谱构建
+## stock-knowledge-graph
 
-利用网络上公开的数据构建一个小型的证券知识图谱。
+A small knowledge graph (knowledge base) construction using data published on the web.
+
+利用网络上公开的数据构建一个小型的证券知识图谱（知识库）。
 
 Welcome to watch, star or fork.
 
@@ -40,7 +42,7 @@ stock-knowledge-graph/
 
 ### 数据源
 
-> 本项目需要用到两种数据源：一种是公司董事信息，另一种是股票的行业以及概念信息。 
+本项目需要用到两种数据源：一种是公司董事信息，另一种是股票的行业以及概念信息。 
 
 - **公司董事信息**
 
