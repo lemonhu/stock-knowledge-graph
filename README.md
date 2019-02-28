@@ -1,4 +1,4 @@
-## stock-knowledge-graph
+# stock-knowledge-graph
 
 A small knowledge graph (knowledge base) construction using data published on the web.
 
@@ -8,7 +8,7 @@ Welcome to watch, star or fork.
 
 ![stock_graph_demo](./img/stock_graph_demo.png)
 
-### 工程目录结构
+## 工程目录结构
 
 ```
 stock-knowledge-graph/
@@ -40,7 +40,7 @@ stock-knowledge-graph/
 └── requirements.txt
 ```
 
-### 数据源
+## 数据源
 
 本项目需要用到两种数据源：一种是公司董事信息，另一种是股票的行业以及概念信息。 
 
@@ -52,7 +52,7 @@ stock-knowledge-graph/
 
   这部分信息也可以通过⽹上公开的信息得到。在这里，我们使用[Tushare](http://tushare.org/)工具来获得，详细细节见之后具体的任务部分。
 
-### 任务1：从⽹页中抽取董事会的信息
+## 任务1：从⽹页中抽取董事会的信息
 
 在我们给定的html文件中，需要对每一个股票/公司抽取董事会成员的信息，这部分信息包括董事会成员“姓名”、“职务”、“性别”、“年龄”共四个字段。首先，姓名和职务的字段来自于：
 
@@ -73,7 +73,7 @@ stock-knowledge-graph/
 
 注：建议表头最好用相应的英文表示。
 
-### 任务2：获取股票行业和概念的信息
+## 任务2：获取股票行业和概念的信息
 
 对于这部分信息，我们可以利⽤工具`Tushare`来获取，官网为http://tushare.org/ ，使用pip命令进行安装即可。下载完之后，在python里即可调用股票行业和概念信息。参考链接：http://tushare.org/classifying.html#id2
 
@@ -92,7 +92,7 @@ df = ts.get_concept_classified()
 # TODO 保存到“stock_concept_prep.csv”
 ```
 
-### 任务3：设计知识图谱
+## 任务3：设计知识图谱
 
 设计一个这样的图谱：
 
@@ -115,13 +115,13 @@ df = ts.get_concept_classified()
 
 注：实体名字和关系名字需要易懂，对于上述的要求，并不一定存在唯一的设计，只要能够覆盖上面这些要求即可。“ST”标记是⽤用来刻画⼀个股票严重亏损的状态，这个可以从给定的股票名字前缀来判断，背景知识可参考百科[ST股票](https://baike.baidu.com/item/ST%E8%82%A1%E7%A5%A8/632784?fromtitle=ST%E8%82%A1&fromid=2430646)，“ST”股票对应列表为['\*ST', 'ST', 'S*ST', 'SST']。 
 
-### 任务4：创建可以导⼊Neo4j的csv文件
+## 任务4：创建可以导⼊Neo4j的csv文件
 
 在前两个任务里，我们已经分别生成了 `executive_prep.csv`, `stock_industry_prep.csv`, `stock_concept_prep.csv`，但这些文件不能直接导入到Neo4j数据库。所以需要做⼀些处理，并生成能够直接导入Neo4j的csv格式。
 我们需要生成这⼏个文件：`executive.csv`,  `stock.csv`, `concept.csv`, `industry.csv`, `executive_stock.csv`, 
 `stock_industry.csv`, `stock_concept.csv`。对于格式的要求，请参考：https://neo4j.com/docs/operations-manual/current/tutorial/import-tool/
 
-### 任务5：利用上面的csv文件生成数据库
+## 任务5：利用上面的csv文件生成数据库
 
 ```shell
 neo4j_home$ bin/neo4j-admin import --nodes executive.csv --nodes stock.csv -- nodes concept.csv --nodes industry.csv --relationships executive_stock.csv --relationships stock_industry.csv -- relationships stock_concept.csv
@@ -131,7 +131,7 @@ neo4j_home$ bin/neo4j-admin import --nodes executive.csv --nodes stock.csv -- no
 
 把Neo4j服务重启之后，就可以通过`localhost:7474`观察到知识图谱了。
 
-### 任务6：基于构建好的知识图谱，通过编写Cypher语句回答如下问题：
+## 任务6：基于构建好的知识图谱，通过编写Cypher语句回答如下问题
 
 (1) 有多少个公司目前是属于“ST”类型的?
 
@@ -143,6 +143,6 @@ neo4j_home$ bin/neo4j-admin import --nodes executive.csv --nodes stock.csv -- no
 
 请提供对应的Cypher语句以及答案，并把结果写在`result.txt`。
 
-### 任务7：构建人的实体时，重名问题具体怎么解决？
+## 任务7：构建人的实体时，重名问题具体怎么解决？
 
 把简单思路写在`result.txt`文件中。
