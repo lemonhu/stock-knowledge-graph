@@ -1,3 +1,4 @@
+任务6：基于构建好的知识图谱，通过编写Cypher语句回答如下问题
 (1)  有多少个公司目前是属于 “ST”类型的？
 > match (n:ST) return count(distinct(n))
 > 104
@@ -18,9 +19,7 @@ MATCH (m:Concept{name:'锂电池'})<-[:concept_of]-(n:Company)<-[:employ_of{jobs
 RETURN count(distinct(p))*1.0/count(distinct(p2))
 > 0.3541666666666667
 
-(1) match (e:executive)-[e_s:executive_stock]-(s:stock)-[s_c:stock_concept]-(c:concept {concept:'锂电池'})  with collect(e) as all_e return size(filter(ee IN  all_e where ee.sex='女'))*1.0 / size(all_e)
- 结果 0.12896174863387977
 
-构建人的实体时，需要考虑重名情况，那这个问题具体怎么解决？（10%）
+任务7：构建人的实体时，重名问题具体怎么解决？
 (1) 最好的方式是用身份证或者其他唯一能确定人的方式去关联。
 (2) 在本例中，我用 姓名、年龄、性别3个字段做唯一的，将这3个字段做md5。
