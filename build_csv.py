@@ -27,7 +27,7 @@ def build_executive(executive_prep, executive_import):
         headers = ['person_id:ID', 'name', 'gender', 'age:int', ':LABEL']
         file_import_csv.writerow(headers)
         for i, row in enumerate(file_prep_csv):
-            if i == 0:
+            if i == 0 or len(row) < 3:
                 continue
             info = [row[0], row[1], row[2]]
             # generate md5 according to 'name' 'gender' and 'age'
