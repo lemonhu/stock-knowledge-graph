@@ -1,4 +1,4 @@
-industry_id:ID,name,:LABEL
+industry_id:ID(Industry),name,:LABEL
 2212c3e783d2b83a8532d98eeba1c4b2,仪器仪表,Industry
 a2c6239da6b189ac41964eb35e313bb3,商业百货,Industry
 3159a3474b29d95f46fa54b4ed7387c2,玻璃行业,Industry

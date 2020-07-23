@@ -124,12 +124,23 @@ df = ts.get_concept_classified()
 ## 任务5：利用上面的csv文件生成数据库
 
 ```shell
-neo4j_home$ bin/neo4j-admin import --nodes executive.csv --nodes stock.csv -- nodes concept.csv --nodes industry.csv --relationships executive_stock.csv --relationships stock_industry.csv -- relationships stock_concept.csv
+neo4j_home$ bin/neo4j-admin import --id-type=STRING --nodes executive.csv --nodes stock.csv --nodes concept.csv --nodes industry.csv --relationships executive_stock.csv --relationships stock_industry.csv --relationships stock_concept.csv
 ```
 
 这个命令会把所有的数据导入到Neo4j中，数据默认存放在 graph.db 文件夹里。如果graph.db文件夹之前已经有数据存在，则可以选择先删除再执行命令。
 
 把Neo4j服务重启之后，就可以通过`localhost:7474`观察到知识图谱了。
+
+注意：这些csv要放到``~/.config/Neo4j Desktop/Application/neo4jDatabases/database-xxxx/installation-4.0.4``下，即与bin文件夹同级，否则需要绝对路径
+
+简单查询命令
+
+```bash
+# 查询node
+MATCH (n:Concept) RETURN n LIMIT 25
+# 查询relationship
+MATCH p=()-[r:industry_of]->() RETURN p LIMIT 100
+```
 
 ## 任务6：基于构建好的知识图谱，通过编写Cypher语句回答如下问题
 

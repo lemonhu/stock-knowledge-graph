@@ -1,4 +1,4 @@
-concept_id:ID,name,:LABEL
+concept_id:ID(Concept),name,:LABEL
 75e96079eda9b8f8ff26ec4d25a0dfc3,成渝特区,Concept
 83ee0bcb7f4d04367e8834b88995bd8a,氢燃料,Concept
 f1507f026988192110407ff48aebefa9,触摸屏,Concept
